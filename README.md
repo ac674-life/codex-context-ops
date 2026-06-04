@@ -140,3 +140,37 @@ Do not modify business code while building the index.
 ```
 
 During later coding tasks, Codex should read `docs/feature-index.md` first when the task is broad, select the relevant `docs/modules/*.md`, and then use CodeGraph for focused structural analysis. After code changes, Codex should update the feature index when behavior, entry points, dependencies, tests, risks, or known bugs change.
+
+## Update Local Plugin
+
+After this repository publishes a new version, update the local Codex plugin cache with:
+
+```powershell
+codex plugin marketplace upgrade context-tools
+codex plugin add codex-context-ops@context-tools
+```
+
+Verify the installed version:
+
+```powershell
+codex plugin list
+```
+
+You should see `codex-context-ops@context-tools` as `installed, enabled` with the latest version.
+
+If `codex.exe` from WindowsApps fails with `Access is denied`, use the Codex App bundled CLI instead. First locate it:
+
+```powershell
+Get-ChildItem -Path "$env:LOCALAPPDATA\OpenAI\Codex\bin" -Recurse -Filter codex.exe |
+  Select-Object -First 1 -ExpandProperty FullName
+```
+
+Then run the same commands with the full path:
+
+```powershell
+C:\Users\<you>\AppData\Local\OpenAI\Codex\bin\<version>\codex.exe plugin marketplace upgrade context-tools
+C:\Users\<you>\AppData\Local\OpenAI\Codex\bin\<version>\codex.exe plugin add codex-context-ops@context-tools
+C:\Users\<you>\AppData\Local\OpenAI\Codex\bin\<version>\codex.exe plugin list
+```
+
+After updating, restart Codex App or open a new thread in the target project. Existing threads may keep the old skill list in their context snapshot.

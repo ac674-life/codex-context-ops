@@ -21,3 +21,7 @@
 - `$context-init` now creates `docs/feature-index.md` and `docs/modules/README.md`.
 - Context governance, bugfix, review, refactor, and release-check workflows now maintain feature-index docs when code changes affect behavior, entry points, dependencies, tests, risks, or known bugs.
 - Updated bilingual documentation for large-project feature indexing.
+
+## Documentation
+
+- Added README instructions for updating the local Codex plugin cache from the GitHub marketplace, including the Windows bundled CLI fallback when WindowsApps `codex.exe` is not executable.

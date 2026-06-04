@@ -140,3 +140,37 @@ MIT
 ```
 
 后续编码任务中，如果任务范围较大，Codex 应先读取 `docs/feature-index.md`，再选择相关的 `docs/modules/*.md`，然后用 CodeGraph 做定点结构分析。代码变更后，如果行为、入口点、依赖、测试、风险或已知 Bug 发生变化，Codex 应同步更新功能索引。
+
+## 更新本地插件
+
+当这个仓库发布新版本后，使用下面的命令更新本地 Codex 插件缓存：
+
+```powershell
+codex plugin marketplace upgrade context-tools
+codex plugin add codex-context-ops@context-tools
+```
+
+验证安装版本：
+
+```powershell
+codex plugin list
+```
+
+你应该能看到 `codex-context-ops@context-tools` 处于 `installed, enabled` 状态，并显示最新版本号。
+
+如果 WindowsApps 里的 `codex.exe` 报 `Access is denied`，改用 Codex App 自带的真实 CLI。先定位它：
+
+```powershell
+Get-ChildItem -Path "$env:LOCALAPPDATA\OpenAI\Codex\bin" -Recurse -Filter codex.exe |
+  Select-Object -First 1 -ExpandProperty FullName
+```
+
+然后用完整路径执行同样的命令：
+
+```powershell
+C:\Users\<you>\AppData\Local\OpenAI\Codex\bin\<version>\codex.exe plugin marketplace upgrade context-tools
+C:\Users\<you>\AppData\Local\OpenAI\Codex\bin\<version>\codex.exe plugin add codex-context-ops@context-tools
+C:\Users\<you>\AppData\Local\OpenAI\Codex\bin\<version>\codex.exe plugin list
+```
+
+更新后请重启 Codex App，或者至少在目标项目中新开一个线程。已经打开的旧线程可能仍然保留旧的技能列表快照。
