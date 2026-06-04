@@ -1,0 +1,7 @@
+interface:
+  display_name: Context Worktree
+  short_description: Isolate implementation work in a worktree.
+  default_prompt: Use context-worktree for this isolated implementation.
+
+policy:
+  allow_implicit_invocation: false

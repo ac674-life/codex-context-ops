@@ -1,0 +1,7 @@
+interface:
+  display_name: Context Subagents
+  short_description: Use parallel subagents to isolate large or noisy investigations.
+  default_prompt: Use context-subagents for this multi-module investigation.
+
+policy:
+  allow_implicit_invocation: false

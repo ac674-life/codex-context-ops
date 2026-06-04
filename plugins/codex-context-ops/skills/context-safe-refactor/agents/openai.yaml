@@ -1,0 +1,7 @@
+interface:
+  display_name: Context-Safe Refactor
+  short_description: Plan and execute refactors with impact analysis and bounded scope.
+  default_prompt: Use context-safe refactor for this migration or cleanup.
+
+policy:
+  allow_implicit_invocation: false

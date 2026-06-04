@@ -1,0 +1,7 @@
+interface:
+  display_name: Context-Safe Bugfix
+  short_description: Fix bugs with reproduction, CodeGraph analysis, tests, and bug records.
+  default_prompt: Use context-safe bugfix for this issue.
+
+policy:
+  allow_implicit_invocation: false

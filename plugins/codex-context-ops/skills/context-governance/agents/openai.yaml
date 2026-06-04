@@ -1,0 +1,7 @@
+interface:
+  display_name: Context Governance
+  short_description: Default routing and context control for non-trivial coding tasks.
+  default_prompt: Use context governance before starting this task.
+
+policy:
+  allow_implicit_invocation: true

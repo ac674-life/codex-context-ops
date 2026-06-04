@@ -1,0 +1,20 @@
+﻿{
+  "name": "context-tools",
+  "interface": {
+    "displayName": "Context Tools"
+  },
+  "plugins": [
+    {
+      "name": "codex-context-ops",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codex-context-ops"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.zip
+.codex-log/
+__pycache__/
+*.pyc

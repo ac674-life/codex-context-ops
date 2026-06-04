@@ -1,0 +1,7 @@
+interface:
+  display_name: Context Release Check
+  short_description: Audit release readiness and known bug risk.
+  default_prompt: Use context-release-check before this release or merge.
+
+policy:
+  allow_implicit_invocation: false

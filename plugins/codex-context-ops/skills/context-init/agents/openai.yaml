@@ -1,0 +1,7 @@
+interface:
+  display_name: Context Init
+  short_description: Initialize context-safe Codex project files and skills.
+  default_prompt: Use context-init to initialize this project.
+
+policy:
+  allow_implicit_invocation: false

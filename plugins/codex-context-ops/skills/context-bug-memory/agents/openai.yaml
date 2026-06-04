@@ -1,0 +1,7 @@
+interface:
+  display_name: Context Bug Memory
+  short_description: Maintain durable known-bug and regression notes.
+  default_prompt: Use context-bug-memory to update bug records.
+
+policy:
+  allow_implicit_invocation: false
