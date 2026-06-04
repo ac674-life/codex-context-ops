@@ -22,6 +22,17 @@ Codex Context Ops 是一个支持中英文的 Codex 插件市场，用于建立�
 
 ## 安装
 
+推荐使用远程安装：
+
+```powershell
+codex plugin marketplace add ac674-life/codex-context-ops
+codex plugin add codex-context-ops@context-tools
+```
+
+这种方式从 GitHub 安装，不依赖本地项目目录。
+
+本地开发安装：
+
 ```powershell
 git clone https://github.com/ac674-life/codex-context-ops.git
 cd codex-context-ops

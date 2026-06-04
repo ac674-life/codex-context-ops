@@ -6,6 +6,7 @@
 - Adds `--lang en`, `--lang zh-CN`, and `--lang auto`.
 - Adds English and Chinese README navigation.
 - Makes the default governance workflow respond in the user's language.
+- Documents remote GitHub marketplace installation.
 
 ## 0.1.0
 

@@ -22,6 +22,17 @@ It helps large projects reduce context pollution, repeated bugs, and noisy long-
 
 ## Install
 
+Recommended remote install:
+
+```powershell
+codex plugin marketplace add ac674-life/codex-context-ops
+codex plugin add codex-context-ops@context-tools
+```
+
+This installs from GitHub and does not depend on a local project folder.
+
+Local development install:
+
 ```powershell
 git clone https://github.com/ac674-life/codex-context-ops.git
 cd codex-context-ops
