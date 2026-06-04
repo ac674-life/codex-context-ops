@@ -5,6 +5,8 @@ description: Use when explicitly invoked for code review, branch review, PR revi
 
 # Context-Safe Review
 
+Respond in the user's current language unless they explicitly request another language.
+
 1. Inspect the changed files or requested scope.
 2. Use CodeGraph for impact and call-chain questions.
 3. Prioritize correctness, regressions, security, data loss, and missing tests.

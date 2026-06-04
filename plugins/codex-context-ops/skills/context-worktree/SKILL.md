@@ -5,6 +5,8 @@ description: Use when explicitly invoked to isolate implementation, experiments,
 
 # Context Worktree
 
+Respond in the user's current language unless they explicitly request another language.
+
 Use worktrees when implementation should not disturb the current local checkout.
 
 Before work, confirm target branch or starting point, whether the task is experimental or intended for merge, and expected verification commands.

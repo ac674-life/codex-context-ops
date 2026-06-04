@@ -5,6 +5,8 @@ description: Use when explicitly invoked for large, noisy, multi-module, or para
 
 # Context Subagents
 
+Respond in the user's current language unless they explicitly request another language.
+
 Use subagents to keep noisy exploration out of the main thread.
 
 Dispatch by independent concern, for example:

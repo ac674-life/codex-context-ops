@@ -7,6 +7,8 @@ description: Use automatically before non-trivial coding tasks to keep Codex con
 
 Use this as the default routing and context discipline layer.
 
+Respond in the user's current language unless they explicitly request another language.
+
 Route the task:
 
 - Bug, failing test, regression, runtime error -> recommend `$context-safe-bugfix`.

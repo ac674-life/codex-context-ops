@@ -5,6 +5,8 @@ description: Use when explicitly invoked for bug fixes, failing tests, regressio
 
 # Context-Safe Bugfix
 
+Respond in the user's current language unless they explicitly request another language.
+
 1. Reproduce the bug or identify the failing test.
 2. Use CodeGraph for relevant symbols, call chains, and impact.
 3. Read only files on the suspected path.

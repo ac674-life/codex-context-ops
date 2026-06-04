@@ -1,6 +1,6 @@
 {
   "name": "codex-context-ops",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Codex context governance, initialization, bugfix, review, refactor, subagent, worktree, and release-check workflows.",
   "author": {
     "name": "Local developer"
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Codex Context Ops",
     "shortDescription": "Context-safe project workflows for Codex.",
-    "longDescription": "Codex Context Ops bundles an explicit context initializer plus reusable workflows for context governance, bug fixing, review, refactor planning, subagent dispatch, worktree isolation, release checks, and bug-memory maintenance.",
+    "longDescription": "Codex Context Ops bundles bilingual project initialization plus reusable workflows for context governance, bug fixing, review, refactor planning, subagent dispatch, worktree isolation, release checks, and bug-memory maintenance.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [],

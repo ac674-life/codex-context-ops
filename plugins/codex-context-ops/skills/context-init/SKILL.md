@@ -7,11 +7,19 @@ description: Use only when explicitly invoked to initialize a project with Codex
 
 Initialize the current project with the context-safe Codex workflow.
 
+Choose the initialization language from the user's request:
+
+- Chinese request or explicit Chinese preference -> `zh-CN`
+- English request or explicit English preference -> `en`
+- If unclear, ask which language to use.
+
 Run the bundled script from the plugin root:
 
 ```bash
-python scripts/init_context_ops.py --target .
+python scripts/init_context_ops.py --target . --lang zh-CN
 ```
+
+Supported language values are `en`, `zh-CN`, and `auto`. Use `auto` only when the environment locale is reliable.
 
 If the current directory is not the intended project root, ask the user for the target path first.
 
@@ -32,3 +40,5 @@ Creates or updates:
 Do not overwrite existing files unless the user explicitly asks for `--force`.
 
 After init, tell the user which skills are automatic candidates and which must be explicitly invoked.
+
+Respond in the user's chosen language.

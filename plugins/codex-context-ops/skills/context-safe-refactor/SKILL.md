@@ -5,6 +5,8 @@ description: Use when explicitly invoked for refactors, migrations, architecture
 
 # Context-Safe Refactor
 
+Respond in the user's current language unless they explicitly request another language.
+
 1. Define the intended behavior-preserving boundary.
 2. Use CodeGraph to identify callers, callees, and impact.
 3. Split work into small phases.

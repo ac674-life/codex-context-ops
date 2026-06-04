@@ -5,6 +5,8 @@ description: Use when explicitly invoked to record, update, audit, or summarize 
 
 # Context Bug Memory
 
+Respond in the user's current language unless they explicitly request another language.
+
 Use `docs/bugs.md` as durable project memory for recurring, subtle, or high-risk bugs.
 
 Each entry should include:

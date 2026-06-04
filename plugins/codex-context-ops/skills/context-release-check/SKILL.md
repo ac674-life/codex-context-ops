@@ -5,6 +5,8 @@ description: Use when explicitly invoked for release readiness, pre-merge checks
 
 # Context Release Check
 
+Respond in the user's current language unless they explicitly request another language.
+
 1. Inspect current changes or requested release scope.
 2. Check `docs/bugs.md` for unresolved high-risk issues.
 3. Use CodeGraph for high-risk impact questions.
