@@ -6,3 +6,4 @@ Thumbs.db
 .codex-log/
 __pycache__/
 *.pyc
+.local-migration/
