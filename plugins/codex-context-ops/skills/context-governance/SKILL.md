@@ -29,3 +29,10 @@ Context rules:
 - Persist durable facts in project files.
 
 Before claiming completion, report files changed, tests/checks run, skipped checks, and residual risks.
+
+## Feature Index Rule
+
+- If `docs/feature-index.md` exists and the task is broad, read it before exploring code.
+- Use relevant `docs/modules/*.md` files to narrow the task before source reads.
+- If a task changes behavior, entry points, dependencies, tests, risks, or known bugs, update the feature index or state why no update was needed.
+- Recommend `$context-feature-index` for first-time index creation, full rebuilds, stale-index audits, or feature-map navigation.

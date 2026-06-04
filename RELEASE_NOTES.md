@@ -14,3 +14,10 @@
 - Adds `codex-context-ops` plugin.
 - Adds project initializer and context-safe workflow skills.
 - Adds one-click PowerShell installer.
+
+## 0.3.0
+
+- Added `$context-feature-index` for creating, rebuilding, auditing, and navigating feature/module maps.
+- `$context-init` now creates `docs/feature-index.md` and `docs/modules/README.md`.
+- Context governance, bugfix, review, refactor, and release-check workflows now maintain feature-index docs when code changes affect behavior, entry points, dependencies, tests, risks, or known bugs.
+- Updated bilingual documentation for large-project feature indexing.

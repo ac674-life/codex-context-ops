@@ -14,3 +14,7 @@ Respond in the user's current language unless they explicitly request another la
 5. Separate release blockers from non-blocking risks.
 
 Final response must include blockers, non-blocking risks, tests/checks run, skipped checks and why, and release recommendation.
+
+## Feature Index Check
+
+Before release, check whether the feature index reflects the current changed modules. Flag stale `docs/feature-index.md` or `docs/modules/*.md` entries as release risks when they would mislead future Codex threads.

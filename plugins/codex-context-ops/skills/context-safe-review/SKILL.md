@@ -14,3 +14,7 @@ Respond in the user's current language unless they explicitly request another la
 5. Report findings first, ordered by severity.
 
 For each finding include severity, file and line, issue, why it matters, and suggested fix.
+
+## Feature Index Review
+
+During review, check whether changed behavior, entry points, dependencies, tests, risks, or known bugs require updates to `docs/feature-index.md` or `docs/modules/*.md`. Report stale or missing feature-index updates as review findings when they would hurt future navigation.

@@ -120,3 +120,23 @@ plugins/
 ## 许可证
 
 MIT
+
+## 功能索引工作流
+
+`codex-context-ops` 现在包含 `$context-feature-index`，用于解决大项目每个新线程都要重新理解全仓库的问题。
+
+`$context-init` 会创建：
+
+- `docs/feature-index.md`：项目导航入口。
+- `docs/modules/README.md`：模块地图模板和目录入口。
+- `.agents/skills/context-feature-index`：手动技能，用于创建、重建、审计或导航功能地图。
+
+使用方式：
+
+```text
+使用 $codex-context-ops:context-feature-index 为这个项目建立功能索引。
+按照用户可见功能或领域模块拆分项目，并创建 docs/modules/*.md。
+建立索引时不要修改业务代码。
+```
+
+后续编码任务中，如果任务范围较大，Codex 应先读取 `docs/feature-index.md`，再选择相关的 `docs/modules/*.md`，然后用 CodeGraph 做定点结构分析。代码变更后，如果行为、入口点、依赖、测试、风险或已知 Bug 发生变化，Codex 应同步更新功能索引。

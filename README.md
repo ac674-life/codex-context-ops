@@ -120,3 +120,23 @@ plugins/
 ## License
 
 MIT
+
+## Feature Index Workflow
+
+`codex-context-ops` now includes `$context-feature-index` for projects that are too large to rediscover from scratch in every thread.
+
+What `$context-init` creates:
+
+- `docs/feature-index.md`: the project navigation entry.
+- `docs/modules/README.md`: the template and home for module-level maps.
+- `.agents/skills/context-feature-index`: the manual skill for creating, rebuilding, auditing, or navigating the feature map.
+
+How to use it:
+
+```text
+Use $codex-context-ops:context-feature-index to build a feature index for this project.
+Group the project by user-facing features or domain modules, then create docs/modules/*.md files.
+Do not modify business code while building the index.
+```
+
+During later coding tasks, Codex should read `docs/feature-index.md` first when the task is broad, select the relevant `docs/modules/*.md`, and then use CodeGraph for focused structural analysis. After code changes, Codex should update the feature index when behavior, entry points, dependencies, tests, risks, or known bugs change.

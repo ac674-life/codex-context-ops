@@ -15,3 +15,7 @@ Respond in the user's current language unless they explicitly request another la
 6. Run targeted tests after each meaningful phase.
 
 Before editing, state intended scope, files likely affected, compatibility risks, and verification plan.
+
+## Feature Index Maintenance
+
+For refactors, migrations, or module restructuring, treat `docs/feature-index.md` and related `docs/modules/*.md` files as part of the change. Update ownership, main files, entry points, data flow, dependencies, tests, and risks before completion.

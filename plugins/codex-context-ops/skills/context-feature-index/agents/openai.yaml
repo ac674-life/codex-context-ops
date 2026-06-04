@@ -1,0 +1,7 @@
+interface:
+  display_name: Context Feature Index
+  short_description: Create, update, audit, and navigate feature/module index docs.
+  default_prompt: Use context-feature-index for this feature map task.
+
+policy:
+  allow_implicit_invocation: false

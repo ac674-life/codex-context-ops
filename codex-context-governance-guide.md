@@ -459,3 +459,43 @@ codex plugin add codex-context-ops@context-tools
 全局安装插件，项目内执行 `$context-init`。
 
 小任务走 `$context-governance`，Bug 用 `$context-safe-bugfix`，Review 用 `$context-safe-review`，重构用 `$context-safe-refactor`，复杂问题用 `$context-subagents`，隔离实现用 `$context-worktree`，发布前检查用 `$context-release-check`，重复 Bug 记忆用 `$context-bug-memory`。
+
+## 12. 功能索引与模块地图自动维护
+
+当项目变大后，单靠 `docs/architecture.md` 和 `docs/bugs.md` 还不够。你需要一张“功能索引 / 模块地图”，让新的 Codex 线程可以先定位功能，再定点读取代码。
+
+初始化后应包含：
+
+```text
+docs/feature-index.md
+docs/modules/README.md
+.agents/skills/context-feature-index
+```
+
+推荐首次建立索引时这样说：
+
+```text
+使用 $codex-context-ops:context-feature-index 为这个项目建立功能索引。
+请按照用户可见功能或领域模块拆分，不要只按文件夹机械拆分。
+为每个主要模块创建 docs/modules/<module>.md。
+建立索引时不要修改业务代码。
+```
+
+后续更新项目时，Codex 应自动维护索引：
+
+- 如果修改了用户可见行为，更新对应模块文档。
+- 如果新增或移动入口点，更新 `docs/feature-index.md` 和相关模块文档。
+- 如果依赖关系、数据流或测试位置变化，更新对应模块文档。
+- 如果引入或修复重复 Bug，同步 `docs/bugs.md` 与相关模块文档。
+- 完成回复中说明“功能索引是否已更新”，如果没有更新，需要说明原因。
+
+使用方式：
+
+| 场景 | 推荐指令 |
+|---|---|
+| 首次建立功能地图 | `$codex-context-ops:context-feature-index` |
+| 怀疑索引过期 | `$codex-context-ops:context-feature-index` |
+| 新线程快速定位功能 | 先让 Codex 读取 `docs/feature-index.md` |
+| 普通 Bugfix / Refactor | 使用对应技能，完成后让 Codex 同步更新索引 |
+
+一句话：`context-init` 负责创建索引框架，`context-feature-index` 负责主动建立或审计索引，其他安全工作流负责在日常改代码时顺手维护索引。

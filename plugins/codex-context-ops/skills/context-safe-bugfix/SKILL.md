@@ -16,3 +16,7 @@ Respond in the user's current language unless they explicitly request another la
 7. Update `docs/bugs.md` if the bug is recurring, subtle, or high-risk.
 
 Final response must include symptom, root cause, fix summary, files changed, tests run, and residual risk.
+
+## Feature Index Maintenance
+
+After the fix, update `docs/feature-index.md` and the related `docs/modules/*.md` file when the bug changes user-visible behavior, entry points, dependencies, regression tests, known risks, or known bugs. If no index exists, mention that `$context-feature-index` can create one.
