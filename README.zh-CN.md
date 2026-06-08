@@ -6,6 +6,8 @@ Codex Context Ops 是一个支持中英文的 Codex 插件市场，用于建立�
 
 它通过一组可复用的 Codex 技能，帮助大型项目减少上下文污染、重复 Bug 和长会话噪声。
 
+Agency agents 安装能力基于 [jnMetaCode/agency-agents-zh](https://github.com/jnMetaCode/agency-agents-zh)。
+
 ## 技能列表
 
 | 技能 | 用途 | 触发方式 |

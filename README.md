@@ -6,6 +6,8 @@ Codex Context Ops is a bilingual Codex plugin marketplace for context-safe AI co
 
 It helps large projects reduce context pollution, repeated bugs, and noisy long-running conversations through reusable Codex skills.
 
+Agency agent installation is powered by [jnMetaCode/agency-agents-zh](https://github.com/jnMetaCode/agency-agents-zh).
+
 ## Skills
 
 | Skill | Purpose | Trigger |
