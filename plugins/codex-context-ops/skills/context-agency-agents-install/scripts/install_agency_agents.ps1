@@ -2,9 +2,12 @@ param(
     [string]$Target = ".",
     [ValidateSet("auto", "core", "web", "backend", "ai-data", "unity", "product-design", "marketing-cn", "review")]
     [string]$Profile = "auto",
+    [string[]]$Agents = @(),
     [string]$SourceRepo = "",
     [switch]$Force,
-    [switch]$ListProfiles
+    [switch]$ListProfiles,
+    [switch]$ListAgents,
+    [switch]$Yes
 )
 
 $ErrorActionPreference = "Stop"
@@ -131,21 +134,46 @@ function Infer-Profile($Root) {
     return "core"
 }
 
+function Get-NormalizedAgents($Names) {
+    $seen = @{}
+    $result = @()
+    foreach ($Name in $Names) {
+        if ([string]::IsNullOrWhiteSpace($Name)) {
+            continue
+        }
+        $Name -split "[,;]" | ForEach-Object {
+            $agent = $_.Trim()
+            if ([string]::IsNullOrWhiteSpace($agent)) {
+                return
+            }
+            if (-not $seen.ContainsKey($agent)) {
+                $seen[$agent] = $true
+                $result += $agent
+            }
+        }
+    }
+    return $result
+}
+
+function Confirm-AgentInstall($SelectedAgents) {
+    if ($Yes) {
+        return
+    }
+
+    Write-Info "agents selected for installation: $($SelectedAgents.Count)"
+    $SelectedAgents | ForEach-Object { Write-Host "  - $_" }
+    $answer = Read-Host "Install these agents into the target project? Type y/yes to continue"
+    if (($answer -ne "y") -and ($answer -ne "yes")) {
+        Write-Info "installation cancelled by user."
+        exit 0
+    }
+}
+
 if ($ListProfiles) {
     $Profiles.Keys | Sort-Object | ForEach-Object {
         Write-Host "$_ : $($Profiles[$_] -join ', ')"
     }
     exit 0
-}
-
-$TargetRoot = Resolve-Target $Target
-if ($Profile -eq "auto") {
-    $Profile = Infer-Profile $TargetRoot
-    Write-Info "auto profile selected: $Profile"
-}
-
-if (-not $Profiles.ContainsKey($Profile)) {
-    throw "Unknown profile: $Profile"
 }
 
 if ([string]::IsNullOrWhiteSpace($SourceRepo)) {
@@ -176,6 +204,41 @@ if (-not (Test-Path $SourceAgents)) {
     throw "Missing generated Codex agents: $SourceAgents"
 }
 
+if ($ListAgents) {
+    Get-ChildItem -LiteralPath $SourceAgents -Filter "*.toml" |
+        Sort-Object BaseName |
+        ForEach-Object { Write-Host $_.BaseName }
+    exit 0
+}
+
+$TargetRoot = Resolve-Target $Target
+$SelectedAgents = @(Get-NormalizedAgents $Agents)
+$SelectionMode = "profile"
+
+if ($SelectedAgents.Count -gt 0) {
+    $SelectionMode = "custom"
+    if ($Profile -ne "auto") {
+        Write-Info "custom agents provided; ignoring profile: $Profile"
+    }
+} else {
+    if ($Profile -eq "auto") {
+        $Profile = Infer-Profile $TargetRoot
+        Write-Info "auto profile selected: $Profile"
+    }
+
+    if (-not $Profiles.ContainsKey($Profile)) {
+        throw "Unknown profile: $Profile"
+    }
+
+    $SelectedAgents = @($Profiles[$Profile])
+}
+
+if ($SelectedAgents.Count -eq 0) {
+    throw "No agents selected."
+}
+
+Confirm-AgentInstall $SelectedAgents
+
 $DestAgents = Join-Path $TargetRoot ".codex\agents"
 New-Item -ItemType Directory -Force -Path $DestAgents | Out-Null
 
@@ -183,7 +246,7 @@ $Installed = @()
 $Skipped = @()
 $Missing = @()
 
-foreach ($Agent in $Profiles[$Profile]) {
+foreach ($Agent in $SelectedAgents) {
     $src = Join-Path $SourceAgents "$Agent.toml"
     $dst = Join-Path $DestAgents "$Agent.toml"
     if (-not (Test-Path $src)) {
@@ -199,7 +262,10 @@ foreach ($Agent in $Profiles[$Profile]) {
 }
 
 Write-Info "target: $TargetRoot"
-Write-Info "profile: $Profile"
+Write-Info "selection mode: $SelectionMode"
+if ($SelectionMode -eq "profile") {
+    Write-Info "profile: $Profile"
+}
 Write-Info "agents dir: $DestAgents"
 Write-Info "installed: $($Installed.Count)"
 if ($Installed.Count -gt 0) {

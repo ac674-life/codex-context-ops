@@ -1,6 +1,6 @@
 {
   "name": "codex-context-ops",
-  "version": "0.4.0",
+  "version": "0.4.0+codex.20260608074308",
   "description": "Codex context governance, feature indexing, agency-agent installation, initialization, bugfix, review, refactor, subagent, worktree, and release-check workflows.",
   "author": {
     "name": "Local developer"
