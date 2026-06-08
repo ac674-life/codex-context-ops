@@ -1,18 +1,18 @@
 {
   "name": "codex-context-ops",
-  "version": "0.3.0",
-  "description": "Codex context governance, feature indexing, initialization, bugfix, review, refactor, subagent, worktree, and release-check workflows.",
+  "version": "0.4.0",
+  "description": "Codex context governance, feature indexing, agency-agent installation, initialization, bugfix, review, refactor, subagent, worktree, and release-check workflows.",
   "author": {
     "name": "Local developer"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Codex Context Ops",
-    "shortDescription": "Context-safe workflows and feature maps for Codex.",
-    "longDescription": "Codex Context Ops bundles bilingual project initialization plus reusable workflows for context governance, feature/module indexing, bug fixing, review, refactor planning, subagent dispatch, worktree isolation, release checks, and bug-memory maintenance.",
+    "shortDescription": "Context-safe workflows, feature maps, and agent installation for Codex.",
+    "longDescription": "Codex Context Ops bundles bilingual project initialization plus reusable workflows for context governance, feature/module indexing, agency-agents-zh installation, bug fixing, review, refactor planning, subagent dispatch, worktree isolation, release checks, and bug-memory maintenance.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [],
-    "defaultPrompt": "Use $context-init to initialize this project, $context-feature-index to build a module map, or call a context-safe workflow skill directly."
+    "defaultPrompt": "Use $context-init to initialize this project, $context-feature-index to build a module map, $context-agency-agents-install to install project agents, or call a context-safe workflow skill directly."
   }
 }

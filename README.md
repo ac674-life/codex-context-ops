@@ -12,6 +12,7 @@ It helps large projects reduce context pollution, repeated bugs, and noisy long-
 |---|---|---|
 | `$context-init` | Initialize project governance files and local skills | Explicit |
 | `$context-governance` | Route non-trivial tasks and keep context small | Automatic candidate |
+| `$context-agency-agents-install` | Install a focused agency-agents-zh subset into `.codex/agents` | Explicit |
 | `$context-safe-bugfix` | Reproduce, fix, test, and record bugs | Explicit |
 | `$context-safe-review` | Review correctness, regressions, security, and tests | Explicit |
 | `$context-safe-refactor` | Plan bounded refactors and migrations | Explicit |
@@ -72,6 +73,7 @@ AGENTS.md
 docs/bugs.md
 docs/architecture.md
 .agents/skills/context-governance
+.agents/skills/context-agency-agents-install
 .agents/skills/context-safe-bugfix
 .agents/skills/context-safe-review
 .agents/skills/context-safe-refactor
@@ -87,6 +89,7 @@ Existing files are not overwritten unless `--force` is explicitly requested.
 
 ```text
 Use $context-safe-bugfix to fix this bug.
+Use $context-agency-agents-install to install suitable agency agents for this project.
 Use $context-safe-review to review the current changes.
 Use $context-safe-refactor to plan this migration.
 Use $context-subagents to investigate this multi-module issue.
@@ -140,6 +143,38 @@ Do not modify business code while building the index.
 ```
 
 During later coding tasks, Codex should read `docs/feature-index.md` first when the task is broad, select the relevant `docs/modules/*.md`, and then use CodeGraph for focused structural analysis. After code changes, Codex should update the feature index when behavior, entry points, dependencies, tests, risks, or known bugs change.
+
+## Agency Agents Install Flow
+
+`$context-agency-agents-install` installs selected agents from [jnMetaCode/agency-agents-zh](https://github.com/jnMetaCode/agency-agents-zh) into the current project:
+
+```text
+.codex/agents/*.toml
+```
+
+Recommended prompts:
+
+```text
+Use $context-agency-agents-install to install suitable agents for this project.
+Use $context-agency-agents-install with the web profile.
+Use $context-agency-agents-install with the unity profile.
+```
+
+Profiles:
+
+| Profile | Best for |
+|---|---|
+| `auto` | Let Codex infer a conservative project profile |
+| `core` | Unknown or general coding projects |
+| `web` | React, Vue, Next.js, Vite, frontend, full-stack |
+| `backend` | APIs, services, databases, DevOps |
+| `ai-data` | AI, ML, data pipelines, analytics |
+| `unity` | Unity, games, XR, shaders, technical art |
+| `product-design` | Product planning, UX, UI |
+| `marketing-cn` | Xiaohongshu, Douyin, WeChat, Bilibili, China ecommerce |
+| `review` | Code review, testing, security, release quality |
+
+The skill intentionally installs a small project-specific subset instead of all agency agents. Restart Codex or open a new thread after installing project agents.
 
 ## Update Local Plugin
 

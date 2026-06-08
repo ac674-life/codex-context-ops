@@ -12,6 +12,7 @@ Codex Context Ops 是一个支持中英文的 Codex 插件市场，用于建立�
 |---|---|---|
 | `$context-init` | 初始化项目治理文件和本地技能 | 主动调用 |
 | `$context-governance` | 路由非简单任务并控制上下文 | 自动候选 |
+| `$context-agency-agents-install` | 按项目类型安装小集合 agency-agents-zh 到 `.codex/agents` | 主动调用 |
 | `$context-safe-bugfix` | 复现、修复、测试并记录 Bug | 主动调用 |
 | `$context-safe-review` | 审查正确性、回归、安全和测试问题 | 主动调用 |
 | `$context-safe-refactor` | 规划范围明确的重构和迁移 | 主动调用 |
@@ -72,6 +73,7 @@ AGENTS.md
 docs/bugs.md
 docs/architecture.md
 .agents/skills/context-governance
+.agents/skills/context-agency-agents-install
 .agents/skills/context-safe-bugfix
 .agents/skills/context-safe-review
 .agents/skills/context-safe-refactor
@@ -87,6 +89,7 @@ docs/architecture.md
 
 ```text
 使用 $context-safe-bugfix 修复这个 Bug。
+使用 $context-agency-agents-install 为这个项目安装合适的 agency agents。
 使用 $context-safe-review 审查当前改动。
 使用 $context-safe-refactor 规划这个迁移。
 使用 $context-subagents 调查这个跨模块问题。
@@ -140,6 +143,38 @@ MIT
 ```
 
 后续编码任务中，如果任务范围较大，Codex 应先读取 `docs/feature-index.md`，再选择相关的 `docs/modules/*.md`，然后用 CodeGraph 做定点结构分析。代码变更后，如果行为、入口点、依赖、测试、风险或已知 Bug 发生变化，Codex 应同步更新功能索引。
+
+## Agency Agents 安装流程
+
+`$context-agency-agents-install` 会从 [jnMetaCode/agency-agents-zh](https://github.com/jnMetaCode/agency-agents-zh) 选择合适的 agents，并安装到当前项目：
+
+```text
+.codex/agents/*.toml
+```
+
+推荐提示词：
+
+```text
+使用 $context-agency-agents-install 为这个项目安装合适的 agents。
+使用 $context-agency-agents-install，并选择 web profile。
+使用 $context-agency-agents-install，并选择 unity profile。
+```
+
+Profiles：
+
+| Profile | 适合项目 |
+|---|---|
+| `auto` | 让 Codex 根据项目结构保守判断 |
+| `core` | 不确定类型或通用代码项目 |
+| `web` | React、Vue、Next.js、Vite、前端、全栈 |
+| `backend` | API、服务、数据库、DevOps |
+| `ai-data` | AI、机器学习、数据管线、分析 |
+| `unity` | Unity、游戏、XR、Shader、技术美术 |
+| `product-design` | 产品规划、UX、UI |
+| `marketing-cn` | 小红书、抖音、微信、B站、中国电商 |
+| `review` | 代码审查、测试、安全、发布质量 |
+
+这个技能会刻意安装“项目小集合”，而不是一次安装所有 agency agents。安装后请重启 Codex，或者在目标项目中新开线程。
 
 ## 更新本地插件
 

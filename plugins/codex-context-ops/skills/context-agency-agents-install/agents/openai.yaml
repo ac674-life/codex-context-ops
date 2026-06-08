@@ -1,0 +1,7 @@
+interface:
+  display_name: Context Agency Agents Install
+  short_description: Install a focused agency-agents-zh subset into a Codex project.
+  default_prompt: Use context-agency-agents-install to select and install project-specific agency agents.
+
+policy:
+  allow_implicit_invocation: false

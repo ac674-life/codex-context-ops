@@ -22,6 +22,12 @@
 - Context governance, bugfix, review, refactor, and release-check workflows now maintain feature-index docs when code changes affect behavior, entry points, dependencies, tests, risks, or known bugs.
 - Updated bilingual documentation for large-project feature indexing.
 
+## 0.4.0
+
+- Added `$context-agency-agents-install` for installing focused `jnMetaCode/agency-agents-zh` Codex agents into project-level `.codex/agents`.
+- Added a PowerShell installer script with project profiles: `auto`, `core`, `web`, `backend`, `ai-data`, `unity`, `product-design`, `marketing-cn`, and `review`.
+- Updated project initialization so the agency-agent installer skill is copied into `.agents/skills`.
+
 ## Documentation
 
 - Added README instructions for updating the local Codex plugin cache from the GitHub marketplace, including the Windows bundled CLI fallback when WindowsApps `codex.exe` is not executable.

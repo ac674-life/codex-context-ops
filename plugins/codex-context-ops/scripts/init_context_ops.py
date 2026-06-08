@@ -40,6 +40,7 @@ Automatic candidate:
 - `$context-governance` for non-trivial tasks and workflow routing.
 
 Manual skills:
+- `$context-agency-agents-install` for installing a focused agency-agents-zh subset into `.codex/agents`.
 - `$context-feature-index` for creating, rebuilding, auditing, or navigating feature/module maps.
 - `$context-safe-bugfix` for bugs, failing tests, regressions, runtime errors, and recurring defects.
 - `$context-safe-review` for code review, PR review, risk analysis, and test gap analysis.
@@ -50,6 +51,7 @@ Manual skills:
 - `$context-bug-memory` for recording or auditing recurring bugs in `docs/bugs.md`.
 
 Manual capabilities:
+- Use `$context-agency-agents-install` explicitly when a project needs extra role agents. Prefer project-specific subsets over installing every agency agent.
 - Use `$context-feature-index` explicitly for first-time index creation, full rebuilds, or stale-index audits.
 - Use subagents only when explicitly requested or after proposing them for broad multi-module work.
 - Use worktrees only when explicitly requested or after proposing them for isolated implementation.
@@ -207,6 +209,7 @@ AGENTS_BLOCK_ZH = f"""{START}
 - `$context-governance`：用于非简单任务和工作流路由。
 
 需要主动调用的技能：
+- `$context-agency-agents-install`：将 agency-agents-zh 中适合项目的小集合安装到 `.codex/agents`。
 - `$context-feature-index`：创建、重建、审计或导航功能/模块地图。
 - `$context-safe-bugfix`：Bug、测试失败、回归问题、运行时错误和重复缺陷。
 - `$context-safe-review`：代码审查、PR 审查、风险分析和测试缺口分析。
@@ -217,6 +220,7 @@ AGENTS_BLOCK_ZH = f"""{START}
 - `$context-bug-memory`：记录或审计 `docs/bugs.md` 中的重复 Bug。
 
 需要主动调用的能力：
+- 项目需要额外角色 agent 时，显式使用 `$context-agency-agents-install`。优先按项目类型安装小集合，不要默认安装所有 agency agents。
 - 首次建立索引、完整重建索引或审计过期索引时，显式使用 `$context-feature-index`。
 - 仅在用户明确要求，或 Codex 对跨模块任务提出建议并获得同意后，使用 subagents。
 - 仅在用户明确要求，或 Codex 对隔离实现提出建议并获得同意后，使用 worktree。
@@ -349,6 +353,7 @@ MODULES_README_MD_ZH = """# 模块地图
 
 PROJECT_SKILLS = [
     "context-governance",
+    "context-agency-agents-install",
     "context-feature-index",
     "context-safe-bugfix",
     "context-safe-review",
